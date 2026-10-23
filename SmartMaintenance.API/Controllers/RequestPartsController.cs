@@ -16,7 +16,7 @@ namespace SmartMaintenance.API.Controllers
             _context = context;
         }
 
-        // POST: api/requestparts (إضافة قطعة غيار لطلب معين وتحديث الإجمالي)
+        // POST: api/requestparts (إضافة قطعة غيار لطلب معين وتحديث الإجمالي في الفاتورة )
 
         [HttpPost]
         public async Task<ActionResult<RequestPart>> AddPart(RequestPart part)

@@ -2,7 +2,7 @@
 {
     public class WorkerReviewDto
     {
-        public int RequestId { get; set; } // <--- السطر الجديد المضاف
+        public int RequestId { get; set; } 
         public string CustomerName { get; set; } = string.Empty;
         public int Rating { get; set; }
         public string? Comment { get; set; }

@@ -37,7 +37,7 @@ namespace SmartMaintenance.API.Controllers
         }
 
         
-        //  إدارة الملف الشخصي 
+        //  تعديل البروافيل 
         
 
         // 1. GET: api/users/profile
@@ -60,7 +60,7 @@ namespace SmartMaintenance.API.Controllers
             var profile = new UserProfileDto
             {
                 Id = user.Id,
-                Name = user.Name, // تأكد إن اسم الخاصية عندك Name أو UserName
+                Name = user.Name, 
                 Email = user.Email,
                 PhoneNumber = user.Phone,
                 Role = user.Role
@@ -97,7 +97,7 @@ namespace SmartMaintenance.API.Controllers
                 user.Phone = dto.PhoneNumber;
             }
 
-            // تحديث كلمة المرور إن وجدت
+            // تحديث كلمة المرور لو موجودة
             if (!string.IsNullOrWhiteSpace(dto.NewPassword))
             {
                 if (string.IsNullOrWhiteSpace(dto.CurrentPassword) || user.PasswordHash != dto.CurrentPassword)

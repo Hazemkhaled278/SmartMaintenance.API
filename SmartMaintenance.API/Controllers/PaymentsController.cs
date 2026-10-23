@@ -20,7 +20,7 @@ namespace SmartMaintenance.API.Controllers
         }
 
         // POST: api/payments
-        // إنشاء عملية دفع جديدة وإرفاق رابط الإيصال
+        // هنعمل عملية دفع جديدة و معاها الايصال الدفع
         [HttpPost]
         public async Task<IActionResult> CreatePayment([FromBody] CreatePaymentDto dto)
         {
@@ -47,7 +47,7 @@ namespace SmartMaintenance.API.Controllers
         }
 
         // GET: api/payments
-        // جلب جميع عمليات الدفع (للأدمن)
+        // هات جميع عمليات الدفع (للأدمن)
         [HttpGet]
         public async Task<IActionResult> GetAllPayments()
         {
@@ -59,7 +59,7 @@ namespace SmartMaintenance.API.Controllers
         }
 
         // GET: api/payments/request/{requestId}
-        // جلب المدفوعات الخاصة بطلب صيانة معين
+        // هات المدفوعات الخاصة بطلب صيانة معين
         [HttpGet("request/{requestId}")]
         public async Task<IActionResult> GetPaymentsByRequestId(int requestId)
         {

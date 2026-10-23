@@ -7,7 +7,7 @@ namespace SmartMaintenance.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")] // مقتصر على الأدمن فقط
+    [Authorize(Roles = "Admin")] //يعني للادمن بس
     public class DashboardController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -17,7 +17,7 @@ namespace SmartMaintenance.API.Controllers
             _context = context;
         }
 
-        // 1. الإحصائيات العامة والملخص
+        // 1. داشبورد تحليل الفني و غيره
         [HttpGet("stats")]
         public async Task<IActionResult> GetDashboardStats()
         {
@@ -44,7 +44,7 @@ namespace SmartMaintenance.API.Controllers
             });
         }
 
-        // 2. أكثر الخدمات طلباً
+        // 2. أكتر الخدمات المطلوبة
         [HttpGet("top-services")]
         public async Task<IActionResult> GetTopServices()
         {

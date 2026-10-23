@@ -26,7 +26,7 @@ namespace SmartMaintenanceApi.Controllers
             var completedRequests = await _context.Requests.CountAsync(r => r.Status == "Completed");
             var canceledRequests = await _context.Requests.CountAsync(r => r.Status == "Canceled");
 
-            // حساب أجمالي الأرباح من الطلبات المكتملة فقط
+            // حساب أجمالي الأرباح من الطلبات اللي كملت للنهاية
             var totalRevenue = await _context.Requests
                 .Where(r => r.Status == "Completed")
                 .SumAsync(r => r.TotalAmount);

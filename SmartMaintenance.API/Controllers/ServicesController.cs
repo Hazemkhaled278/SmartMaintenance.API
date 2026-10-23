@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartMaintenance.API.Data; // غير اسم الـ Namespace حسب مشروعك
+using SmartMaintenance.API.Data;
 using SmartMaintenance.API.Models;
 
 namespace SmartMaintenance.API.Controllers
@@ -17,7 +17,7 @@ namespace SmartMaintenance.API.Controllers
             _context = context;
         }
 
-        // 1. GET: api/Services (عرض كل الخدمات)
+        // 1. GET: api/Services (عرض كل الخدمات اللي موجودة)
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Service>>> GetServices()
         {
@@ -49,7 +49,7 @@ namespace SmartMaintenance.API.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")] // مسموح للأدمن فقط
+        [Authorize(Roles = "Admin")] //للأدمن بس 
         public async Task<IActionResult> UpdateService(int id, [FromBody] Service updatedService)
         {
             if (id != updatedService.Id)

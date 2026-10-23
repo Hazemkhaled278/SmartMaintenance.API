@@ -109,13 +109,13 @@ namespace SmartMaintenance.API.Controllers
                 .Include(r => r.Service)
                 .AsQueryable();
 
-            // التصفية بحالة الطلب إن وُجدت
+            // التصفية بحالة الطلب (علشان الداشبورد )
             if (!string.IsNullOrWhiteSpace(status))
             {
                 query = query.Where(r => r.Status.ToLower() == status.ToLower());
             }
 
-            // التصفية بالتاريخ إن وُجد
+            // التصفية بالتاريخ (علشان الداشبورد بردوا )
             if (date.HasValue)
             {
                 query = query.Where(r => r.BookingDate.Date == date.Value.Date);

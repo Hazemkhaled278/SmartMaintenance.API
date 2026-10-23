@@ -58,13 +58,13 @@ namespace SmartMaintenance.API.Controllers
                 .Where(u => u.Role == "Worker")
                 .AsQueryable();
 
-            // جلب البيانات مع حساب متوسط التقييمات وعدد التقييمات لكل فني
+            // هنجيب البيانات مع حساب avg  التقييمات وعدد التقييمات لكل فني
             var workers = await query.Select(w => new
             {
                 WorkerId = w.Id,
                 WorkerName = w.Name,
                 WorkerEmail = w.Email,
-                // حساب متوسط التقييم للفني
+                // حساب avg  التقييم للفني
                 AverageRating = _context.Reviews.Where(r => r.WorkerId == w.Id).Any()
                                 ? _context.Reviews.Where(r => r.WorkerId == w.Id).Average(r => r.Rating)
                                 : 0,

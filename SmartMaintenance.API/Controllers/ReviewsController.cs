@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SmartMaintenance.API.Data;
 using SmartMaintenance.API.Models;
-using SmartMaintenance.API.DTOs; // المسار الصح للـ DTOs
+using SmartMaintenance.API.DTOs; 
 
 namespace SmartMaintenance.API.Controllers
 {
@@ -24,12 +24,11 @@ namespace SmartMaintenance.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // 1. البحث عن طلب الصيانة والـ Include للتاكد من جلب البيانات المرتبطة لو متوفرة
             var request = await _context.Requests.FindAsync(reviewDto.RequestId);
             if (request == null)
                 return NotFound(new { message = "طلب الصيانة غير موجود." });
 
-            // 2. التحقق من أن الطلب مسند له فني فعلاً قبل التقييم
+            // 2. نتأكد من أن الطلب  له فني فعلاً قبل التقييم
             if (request.WorkerId == null || request.WorkerId == 0)
             {
                 return BadRequest(new { message = "لا يمكن تقييم طلب صيانة لم يتم إسناده لفني بعد." });

@@ -18,7 +18,7 @@ namespace SmartMaintenance.API.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // 1. حل مشكلة Cascade Delete
+           
             modelBuilder.Entity<Request>()
                 .HasOne(r => r.Customer)
                 .WithMany(u => u.Requests)
@@ -37,7 +37,6 @@ namespace SmartMaintenance.API.Data
                 .HasForeignKey(r => r.ServiceId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // حل مشكلة Cascade Delete لجدول التقييمات
             modelBuilder.Entity<Review>()
                 .HasOne(r => r.Customer)
                 .WithMany()
@@ -50,7 +49,6 @@ namespace SmartMaintenance.API.Data
                 .HasForeignKey(r => r.WorkerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // 2. Data Seeding (مع الأسعار الجديدة للخدمات)
             modelBuilder.Entity<User>().HasData(
     new User { Id = 1, Name = "Hazem Mohamed", Email = "hazem@example.com", PasswordHash = "pass123", Role = "Customer", Phone = "01032039680" }
 );
